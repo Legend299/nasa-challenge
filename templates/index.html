@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Predicciones de Sequía</title>
+  </head>
+  <body>
+    <h1>Predicciones de Sequía</h1>
+    <p>
+      Se basa en un % en este caso de que exista sequía, entre mayor sea más
+      probable de suceder, entrenado con datos desde 2000 al 2024 de los 3
+      estados más importantes en agricultura de USA: IOWA, TEXAS y MISSOURI
+    </p>
+    <p>
+      <strong>Nota:</strong> El modelo solo puede predecir fechas entre el 5 de
+      octubre 2024 al 31 de diciembre 2024.
+    </p>
+
+    <form id="fechaForm">
+      <label for="fecha">Ingresa la fecha (YYYY-MM-DD):</label>
+      <input type="date" id="fecha" required />
+      <button type="submit">Obtener Predicciones</button>
+    </form>
+
+    <div id="resultado">
+      <h2>Resultados Sequia:</h2>
+      <p id="resultadoIA"></p>
+      <p id="resultadoTX"></p>
+      <p id="resultadoMO"></p>
+    </div>
+
+    <script>
+      document
+        .getElementById("fechaForm")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+          const fecha = document.getElementById("fecha").value;
+          const response = await fetch("/predecir?fecha=" + fecha);
+          const datos = await response.json();
+
+          if (datos.error) {
+            alert(datos.error);
+            return;
+          }
+          document.getElementById(
+            "resultadoIA"
+          ).textContent = `Predicción Iowa: ${datos.prediccion_IA}% de sequía`;
+          document.getElementById(
+            "resultadoTX"
+          ).textContent = `Predicción Texas: ${datos.prediccion_TX}% de sequía`;
+          document.getElementById(
+            "resultadoMO"
+          ).textContent = `Predicción Missouri: ${datos.prediccion_MO}% de sequía`;
+        });
+    </script>
+  </body>
+</html>
