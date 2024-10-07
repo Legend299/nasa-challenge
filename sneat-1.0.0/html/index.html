@@ -63,9 +63,22 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="../assets/js/config.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
   </head>
 
   <body>
+    <style>
+      body {
+        background-color: #ebfbdb !important;
+        background-image: url(https://images.pexels.com/photos/55766/pexels-photo-55766.jpeg?cs=srgb&dl=pexels-pierre-sudre-9695-55766.jpg&fm=jpg);
+        background-size: cover;
+      }
+
+      .card {
+        background-color: rgb(252, 235, 224) !important;
+      }
+    </style>
+
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
@@ -576,13 +589,6 @@
                     <div class="d-flex align-items-end row">
                       <div class="col-sm-7">
                         <div class="card-body">
-                          <!-- <h5 class="card-title text-primary">Congratulations John! 🎉</h5>
-                          <p class="mb-4">
-                            You have done <span class="fw-bold">72%</span> more sales today. Check your new badge in
-                            your profile.
-                          </p>
-
-                          <a href="javascript:;" class="btn btn-sm btn-outline-primary">View Badges</a> -->
                           <div class="mb-3 row">
                             <form id="fechaForm">
                               <label for="html5-date-input" class="col-md-2 col-form-label">Date</label>
@@ -604,7 +610,7 @@
                       <div class="col-sm-5 text-center text-sm-left">
                         <div class="card-body pb-0 px-0 px-md-4">
                           <img
-                            src="../assets/img/illustrations/man-with-laptop-light.png"
+                            src="../assets/img/segador.png"
                             height="140"
                             alt="View Badge User"
                             data-app-dark-img="illustrations/man-with-laptop-dark.png"
@@ -623,11 +629,8 @@
                         <div class="card-body">
                           <div class="card-title d-flex align-items-start justify-content-between">
                             <div class="avatar flex-shrink-0">
-                              <img
-                                src="../assets/img/icons/unicons/chart-success.png"
-                                alt="chart success"
-                                class="rounded"
-                              />
+                              <!-- src="../assets/img/icons/unicons/chart-success.png" -->
+                              <img src="../assets/img/icons/tx.png" alt="chart success" class="rounded" />
                             </div>
                             <div class="dropdown">
                               <!-- <button
@@ -657,11 +660,7 @@
                         <div class="card-body">
                           <div class="card-title d-flex align-items-start justify-content-between">
                             <div class="avatar flex-shrink-0">
-                              <img
-                                src="../assets/img/icons/unicons/wallet-info.png"
-                                alt="Credit Card"
-                                class="rounded"
-                              />
+                              <img src="../assets/img/icons/ia.png" alt="Credit Card" class="rounded" />
                             </div>
                             <div class="dropdown">
                               <button
@@ -682,7 +681,6 @@
                           </div>
                           <span>Iowa</span>
                           <h3 id="resultadoIA" class="card-title text-nowrap mb-1">0</h3>
-                          <!-- <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.42%</small> -->
                         </div>
                       </div>
                     </div>
@@ -692,11 +690,12 @@
                 <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
                   <div class="card">
                     <div class="row row-bordered g-0">
-                      <div class="col-md-8">
-                        <h5 class="card-header m-0 me-2 pb-3">Total Revenue</h5>
-                        <div id="totalRevenueChart" class="px-2"></div>
+                      <div class="col-md-12">
+                        <h5 class="card-header m-0 me-2 pb-3">Gráfica de Sequia 7 días posteriores a hoy</h5>
+                        <!-- <div id="totalRevenueChart" class="px-2"></div> -->
+                        <canvas id="myChart" style="width:100%;max-width:800px"></canvas>
                       </div>
-                      <div class="col-md-4">
+                      <!-- <div class="col-md-4">
                         <div class="card-body">
                           <div class="text-center">
                             <div class="dropdown">
@@ -741,7 +740,7 @@
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </div> -->
                     </div>
                   </div>
                 </div>
@@ -753,7 +752,7 @@
                         <div class="card-body">
                           <div class="card-title d-flex align-items-start justify-content-between">
                             <div class="avatar flex-shrink-0">
-                              <img src="../assets/img/icons/unicons/paypal.png" alt="Credit Card" class="rounded" />
+                              <img src="../assets/img/icons/mo.png" alt="Credit Card" class="rounded" />
                             </div>
                             <div class="dropdown">
                               <button
@@ -810,7 +809,7 @@
                     </div>
                     <!-- </div>
     <div class="row"> -->
-                    <div class="col-12 mb-4">
+                    <!-- <div class="col-12 mb-4">
                       <div class="card">
                         <div class="card-body">
                           <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
@@ -830,18 +829,18 @@
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </div>
               <div class="row">
                 <!-- Order Statistics -->
                 <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
-                  <div class="card h-100">
+                  <div class="card h-80">
                     <div class="card-header d-flex align-items-center justify-content-between pb-0">
                       <div class="card-title mb-0">
-                        <h5 class="m-0 me-2">Order Statistics</h5>
-                        <small class="text-muted">42.82k Total Sales</small>
+                        <h5 class="m-0 me-2">Temperatura</h5>
+                        <small class="text-muted"></small>
                       </div>
                       <div class="dropdown">
                         <button
@@ -863,11 +862,11 @@
                     </div>
                     <div class="card-body">
                       <div class="d-flex justify-content-between align-items-center mb-3">
-                        <div class="d-flex flex-column align-items-center gap-1">
-                          <h2 class="mb-2">8,258</h2>
-                          <span>Total Orders</span>
-                        </div>
-                        <div id="orderStatisticsChart"></div>
+                        <!-- <div class="d-flex flex-column align-items-center gap-1"> -->
+                        <h2 class="mb-2">Estado</h2>
+                        <span>Temp Máxima</span>
+                        <!-- </div> -->
+                        <!-- <div id="orderStatisticsChart"></div> -->
                       </div>
                       <ul class="p-0 m-0">
                         <li class="d-flex mb-4 pb-1">
@@ -878,11 +877,11 @@
                           </div>
                           <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                             <div class="me-2">
-                              <h6 class="mb-0">Electronic</h6>
-                              <small class="text-muted">Mobile, Earbuds, TV</small>
+                              <h6 class="mb-0">Texas</h6>
+                              <!-- <small class="text-muted">52.3 C</small> -->
                             </div>
                             <div class="user-progress">
-                              <small class="fw-semibold">82.5k</small>
+                              <small id="resultadoTemperaturaTX" class="fw-semibold">53.3 F</small>
                             </div>
                           </div>
                         </li>
@@ -892,11 +891,11 @@
                           </div>
                           <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                             <div class="me-2">
-                              <h6 class="mb-0">Fashion</h6>
-                              <small class="text-muted">T-shirt, Jeans, Shoes</small>
+                              <h6 class="mb-0">Iowa</h6>
+                              <!-- <small class="text-muted">T-shirt, Jeans, Shoes</small> -->
                             </div>
                             <div class="user-progress">
-                              <small class="fw-semibold">23.8k</small>
+                              <small id="resultadoTemperaturaIA" class="fw-semibold">50 F</small>
                             </div>
                           </div>
                         </li>
@@ -906,21 +905,21 @@
                           </div>
                           <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                             <div class="me-2">
-                              <h6 class="mb-0">Decor</h6>
-                              <small class="text-muted">Fine Art, Dining</small>
+                              <h6 class="mb-0">Missouri</h6>
+                              <!-- <small class="text-muted">Fine Art, Dining</small> -->
                             </div>
                             <div class="user-progress">
-                              <small class="fw-semibold">849k</small>
+                              <small id="resultadoTemperaturaMO" class="fw-semibold">50 F</small>
                             </div>
                           </div>
                         </li>
                         <li class="d-flex">
-                          <div class="avatar flex-shrink-0 me-3">
+                          <!-- <div class="avatar flex-shrink-0 me-3">
                             <span class="avatar-initial rounded bg-label-secondary"
                               ><i class="bx bx-football"></i
                             ></span>
-                          </div>
-                          <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                          </div> -->
+                          <!-- <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                             <div class="me-2">
                               <h6 class="mb-0">Sports</h6>
                               <small class="text-muted">Football, Cricket Kit</small>
@@ -928,7 +927,7 @@
                             <div class="user-progress">
                               <small class="fw-semibold">99</small>
                             </div>
-                          </div>
+                          </div> -->
                         </li>
                       </ul>
                     </div>
@@ -937,71 +936,14 @@
                 <!--/ Order Statistics -->
 
                 <!-- Expense Overview -->
-                <div class="col-md-6 col-lg-4 order-1 mb-4">
-                  <div class="card h-100">
-                    <div class="card-header">
-                      <ul class="nav nav-pills" role="tablist">
-                        <li class="nav-item">
-                          <button
-                            type="button"
-                            class="nav-link active"
-                            role="tab"
-                            data-bs-toggle="tab"
-                            data-bs-target="#navs-tabs-line-card-income"
-                            aria-controls="navs-tabs-line-card-income"
-                            aria-selected="true"
-                          >
-                            Income
-                          </button>
-                        </li>
-                        <li class="nav-item">
-                          <button type="button" class="nav-link" role="tab">Expenses</button>
-                        </li>
-                        <li class="nav-item">
-                          <button type="button" class="nav-link" role="tab">Profit</button>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="card-body px-0">
-                      <div class="tab-content p-0">
-                        <div class="tab-pane fade show active" id="navs-tabs-line-card-income" role="tabpanel">
-                          <div class="d-flex p-4 pt-3">
-                            <div class="avatar flex-shrink-0 me-3">
-                              <img src="../assets/img/icons/unicons/wallet.png" alt="User" />
-                            </div>
-                            <div>
-                              <small class="text-muted d-block">Total Balance</small>
-                              <div class="d-flex align-items-center">
-                                <h6 class="mb-0 me-1">$459.10</h6>
-                                <small class="text-success fw-semibold">
-                                  <i class="bx bx-chevron-up"></i>
-                                  42.9%
-                                </small>
-                              </div>
-                            </div>
-                          </div>
-                          <div id="incomeChart"></div>
-                          <div class="d-flex justify-content-center pt-4 gap-2">
-                            <div class="flex-shrink-0">
-                              <div id="expensesOfWeek"></div>
-                            </div>
-                            <div>
-                              <p class="mb-n1 mt-1">Expenses This Week</p>
-                              <small class="text-muted">$39 less than last week</small>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+
                 <!--/ Expense Overview -->
 
                 <!-- Transactions -->
                 <div class="col-md-6 col-lg-4 order-2 mb-4">
-                  <div class="card h-100">
+                  <div class="card h-80">
                     <div class="card-header d-flex align-items-center justify-content-between">
-                      <h5 class="card-title m-0 me-2">Transactions</h5>
+                      <h5 class="card-title m-0 me-2">Humedad</h5>
                       <div class="dropdown">
                         <button
                           class="btn p-0"
@@ -1024,50 +966,50 @@
                       <ul class="p-0 m-0">
                         <li class="d-flex mb-4 pb-1">
                           <div class="avatar flex-shrink-0 me-3">
-                            <img src="../assets/img/icons/unicons/paypal.png" alt="User" class="rounded" />
+                            <img src="../assets/img/icons/tx.png" alt="User" class="rounded" />
                           </div>
                           <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                             <div class="me-2">
-                              <small class="text-muted d-block mb-1">Paypal</small>
-                              <h6 class="mb-0">Send money</h6>
+                              <small class="text-muted d-block mb-1">Texas</small>
+                              <h6 class="mb-0">Humedad</h6>
                             </div>
                             <div class="user-progress d-flex align-items-center gap-1">
-                              <h6 class="mb-0">+82.6</h6>
-                              <span class="text-muted">USD</span>
+                              <h6 id="resultadoHumedadTX" class="mb-0"></h6>
+                              <span class="text-muted"></span>
                             </div>
                           </div>
                         </li>
                         <li class="d-flex mb-4 pb-1">
                           <div class="avatar flex-shrink-0 me-3">
-                            <img src="../assets/img/icons/unicons/wallet.png" alt="User" class="rounded" />
+                            <img src="../assets/img/icons/ia.png" alt="User" class="rounded" />
                           </div>
                           <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                             <div class="me-2">
-                              <small class="text-muted d-block mb-1">Wallet</small>
-                              <h6 class="mb-0">Mac'D</h6>
+                              <small class="text-muted d-block mb-1">Iowa</small>
+                              <h6 class="mb-0">Humedad</h6>
                             </div>
                             <div class="user-progress d-flex align-items-center gap-1">
-                              <h6 class="mb-0">+270.69</h6>
-                              <span class="text-muted">USD</span>
+                              <h6 id="resultadoHumedadIA" class="mb-0"></h6>
+                              <span class="text-muted"></span>
                             </div>
                           </div>
                         </li>
                         <li class="d-flex mb-4 pb-1">
                           <div class="avatar flex-shrink-0 me-3">
-                            <img src="../assets/img/icons/unicons/chart.png" alt="User" class="rounded" />
+                            <img src="../assets/img/icons/mo.png" alt="User" class="rounded" />
                           </div>
                           <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                             <div class="me-2">
-                              <small class="text-muted d-block mb-1">Transfer</small>
-                              <h6 class="mb-0">Refund</h6>
+                              <small class="text-muted d-block mb-1">Missouri</small>
+                              <h6 class="mb-0">Humedad</h6>
                             </div>
                             <div class="user-progress d-flex align-items-center gap-1">
-                              <h6 class="mb-0">+637.91</h6>
-                              <span class="text-muted">USD</span>
+                              <h6 id="resultadoHumedadMO" class="mb-0"></h6>
+                              <span class="text-muted"></span>
                             </div>
                           </div>
                         </li>
-                        <li class="d-flex mb-4 pb-1">
+                        <!-- <li class="d-flex mb-4 pb-1">
                           <div class="avatar flex-shrink-0 me-3">
                             <img src="../assets/img/icons/unicons/cc-success.png" alt="User" class="rounded" />
                           </div>
@@ -1111,7 +1053,7 @@
                               <span class="text-muted">USD</span>
                             </div>
                           </div>
-                        </li>
+                        </li> -->
                       </ul>
                     </div>
                   </div>
@@ -1122,7 +1064,7 @@
             <!-- / Content -->
 
             <!-- Footer -->
-            <footer class="content-footer footer bg-footer-theme">
+            <!-- <footer class="content-footer footer bg-footer-theme">
               <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
                 <div class="mb-2 mb-md-0">
                   ©
@@ -1151,7 +1093,7 @@
                   >
                 </div>
               </div>
-            </footer>
+            </footer> -->
             <!-- / Footer -->
 
             <div class="content-backdrop fade"></div>
@@ -1164,6 +1106,42 @@
       <!-- Overlay -->
       <div class="layout-overlay layout-menu-toggle"></div>
     </div>
+
+    <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
+    <script>
+      const xValues = [7, 8, 9, 10, 11, 12, 13];
+
+      new Chart('myChart', {
+        type: 'line',
+        data: {
+          labels: xValues,
+          datasets: [
+            {
+              data: [61, 76, 74, 77, 86, 83, 53],
+              borderColor: 'red',
+              fill: false,
+              label: 'Texas'
+            },
+            {
+              data: [23, 45, 70, 50, 45, 88, 45],
+              borderColor: 'green',
+              fill: false,
+              label: 'Iowa'
+            },
+            {
+              data: [37, 43, 27, 12, 76, 20, 53],
+              borderColor: 'blue',
+              fill: false,
+              label: 'Missouri'
+            }
+          ]
+        },
+        options: {
+          legend: { display: true }
+        }
+      });
+    </script>
     <!-- / Layout wrapper -->
 
     <!-- <div class="buy-now">

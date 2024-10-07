@@ -24,9 +24,9 @@ def entrenar_y_predecir_sequia(data_estado):
 
 def predecir_sequia():
     fecha_futura = datetime.now()
-    model_ia = entrenar_y_predecir(data_ia)
-    model_tx = entrenar_y_predecir(data_tx)
-    model_mo = entrenar_y_predecir(data_mo)
+    model_ia = entrenar_y_predecir_sequia(data_ia)
+    model_tx = entrenar_y_predecir_sequia(data_tx)
+    model_mo = entrenar_y_predecir_sequia(data_mo)
 
     predicciones = []
     current_date = fecha_futura
